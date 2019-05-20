@@ -8,6 +8,7 @@ import java.util.Map;
 import javax.annotation.Resource;
 import javax.validation.Valid;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.BindingResult;
@@ -31,9 +32,11 @@ import com.action.myboot.service.impl.ValidatorException;
 public class HelloController {
 	@Resource(name="userService")
 	private UserService userService;
+	@Value("${httpUrl}")
+	private String httpUrl;
 	@RequestMapping(value="/sayHello/{name}",method=RequestMethod.GET)
 	public String sayHello(@PathVariable("name")String name) {
-		return "hello boot"+name;
+		return "hello boot"+name+httpUrl;
 	}
 	/**
 	 * 添加用户测试案例：分为前端传递form版本(正常版本) 和前端传递json版本，当前方法为在controller层调用validate验证
