@@ -99,9 +99,9 @@ public class HelloController {
 	            return new JsonResult(ResultCode.VALIDATE_ERR,validMsg);
 		}else {
 			if(user.getUserName().equals("zhangsan")&&user.getUserPwd().equals("admin123")) {
-				String jwt = JwtTokenUtils.generateToken(user.getUserName());
+				//String jwt = JwtTokenUtils.generateToken(user.getUserName());
 				Map<String, String> map= new HashMap<String,String>(){{
-	                put("token", jwt);
+	            //    put("token", jwt);
 	            }};
 	            return new JsonResult(ResultCode.SUCCESS, map);
 			}else {

@@ -40,6 +40,15 @@ import org.springframework.lang.NonNull;
 
 @Entity
 public class User implements Serializable{
+	
+	public User(Integer userId,
+			@NotBlank(message = "不能为空") @Size(max = 16, min = 4, message = "4-16位之间") String userName,
+			@NotBlank(message = "不能为空") @Pattern(regexp = "[a-zA-Z][a-zA-Z0-9]{3,15}", message = "不符合规则") String userPwd) {
+		super();
+		this.userId = userId;
+		this.userName = userName;
+		this.userPwd = userPwd;
+	}
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer userId;
