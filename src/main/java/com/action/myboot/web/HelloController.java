@@ -89,6 +89,7 @@ public class HelloController {
 		return new JsonResult();
 	}
 	
+	//测试jwt
 	@PostMapping(value="login")
 	public Object userLogin(@Valid User user,BindingResult result) {
 		String validMsg="";
