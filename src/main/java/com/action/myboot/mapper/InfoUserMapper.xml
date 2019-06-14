@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.action.myboot.dao.InfoUserMapper">
+	<select id="getInfoUser" resultType="infoUser">
+		select info_id,user_name,user_pwd,user_gender from infouser where
+		info_id=#{infoId}
+	</select>
+</mapper>
