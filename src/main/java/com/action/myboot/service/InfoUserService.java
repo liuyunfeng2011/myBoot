@@ -1,5 +1,7 @@
 package com.action.myboot.service;
 
-public interface InfoUserService {
+import com.action.myboot.pojo.InfoUser;
 
+public interface InfoUserService {
+	public InfoUser getInfoUser(int infoId);
 }

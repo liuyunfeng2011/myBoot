@@ -2,6 +2,11 @@ package com.action.myboot.service.impl;
 
 import static org.junit.Assert.*;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import javax.annotation.Resource;
 
 import org.junit.Ignore;
@@ -28,10 +33,20 @@ public class UserServiceImplTest {
 			e.printStackTrace();
 		}
 	}
+	@Ignore
 	@Test
 	public void testGenderEnum() {
+		Map<Object, Object> dropMap=new HashMap<>();
 		try {
-		System.out.println(SexEnum.values());	
+			List<Map<String, Object>> dropList=new ArrayList<>();
+			for(SexEnum sex:SexEnum.values()){
+				Map<String, Object> sexMap=new HashMap<>();
+				sexMap.put("id",sex.getId());
+				sexMap.put("name",sex.getName());
+				dropList.add(sexMap);
+			}
+			dropMap.put("sex", dropList);
+			System.out.println(dropMap.toString());
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
