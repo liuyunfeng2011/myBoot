@@ -16,5 +16,10 @@ public class InfoUserServiceImpl implements InfoUserService {
 		// TODO Auto-generated method stub
 		return infoMapper.getInfoUser(infoId);
 	}
+	@Override
+	public void addInfoUser(InfoUser user) {
+		// TODO Auto-generated method stub
+		infoMapper.addInfoUser(user);
+	}
 
 }

@@ -3,9 +3,18 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.action.myboot.mapper.InfoUserMapper">
-<resultMap type="" id=""></resultMap>
-	<select id="getInfoUser" resultType="infoUser">
-		select info_id,user_name,user_pwd,user_gender from infouser where
+	<resultMap type="com.action.myboot.pojo.InfoUser" id="infoUserMapper">
+		<id column="info_id" property="infoId" javaType="int" />
+		<result column="user_name" property="infoName" javaType="java.lang.String" />
+		<result column="user_pwd" property="infoPwd" javaType="java.lang.String" />
+		<result column="user_gender" property="sex" typeHandler="com.action.myboot.typeHandler.GenderTypeHandler" />
+	</resultMap>
+	<select id="getInfoUser" resultType="infoUser" >
+		select
+		info_id as infoId,user_name as infoName,user_pwd as infoPwd,user_gender as sex from infouser where
 		info_id=#{infoId}
 	</select>
+	<insert id="addInfoUser" parameterType="infoUser">
+			insert into infouser(user_name,user_pwd,user_gender) values(#{user.infoName},#{user.infoPwd},#{user.sex})
+	</insert>
 </mapper>

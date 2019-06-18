@@ -13,7 +13,16 @@ public class InfoUser {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public InfoUser(String infoName, String infoPwd, String sex) {
+	
+	public InfoUser(Integer infoId, String infoName, String infoPwd, SexEnum sex) {
+		super();
+		this.infoId = infoId;
+		this.infoName = infoName;
+		this.infoPwd = infoPwd;
+		this.sex = sex;
+	}
+
+	public InfoUser(String infoName, String infoPwd, SexEnum sex) {
 		super();
 		this.infoName = infoName;
 		this.infoPwd = infoPwd;
@@ -34,7 +43,7 @@ public class InfoUser {
 //	@JsonProperty("gender")
 //	@Convert(converter=SexConverter.class)
 //	@Column(name="user_gender")
-	private String sex;
+	private SexEnum sex;
 	public Integer getInfoId() {
 		return infoId;
 	}
@@ -53,10 +62,11 @@ public class InfoUser {
 	public void setInfoPwd(String infoPwd) {
 		this.infoPwd = infoPwd;
 	}
-	public String getSex() {
+	
+	public SexEnum getSex() {
 		return sex;
 	}
-	public void setSex(String sex) {
+	public void setSex(SexEnum sex) {
 		this.sex = sex;
 	}
 	@Override
