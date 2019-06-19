@@ -22,8 +22,8 @@ import com.action.myboot.util.RedisUtil;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class InfoUserServiceImplTest {
-//	@Resource
-//    private RedisTemplate<String, Object> redisTemplate;
+	@Resource
+    private RedisTemplate<String, Object> redisTemplate;
 	@Resource
     private RedisUtil redisUtil;
 	@Resource(name="infoUserService")
@@ -49,8 +49,8 @@ public class InfoUserServiceImplTest {
 	@Test
 	public void testupInfoUser() {
 		InfoUser user= new InfoUser();
-		user.setInfoId(22);
-		user.setInfoName("caozh2i");
+		user.setInfoId(1);
+		user.setInfoName("zhangsan22");
 		infoUserService.updateInfoUser(user);
 	}
 	@Ignore
@@ -68,11 +68,11 @@ public class InfoUserServiceImplTest {
 	@Ignore
 	@Test
 	public void testRedis() {
-//		redisTemplate.opsForValue().set("name", "xiaoheihei");
-	//	redisUtil.set("age", "16");
-	System.out.println(redisUtil.hasKey("age"));	
-	redisUtil.expire("name", 30, TimeUnit.SECONDS);
-	System.out.println(redisUtil.getExpire("name"));
+		redisTemplate.opsForValue().set("name", "xiaoheihei");
+		redisUtil.set("age", "16");
+//	System.out.println(redisUtil.hasKey("age"));	
+//	redisUtil.expire("name", 30, TimeUnit.SECONDS);
+//	System.out.println(redisUtil.getExpire("name"));
 	}
 	
 

@@ -27,13 +27,13 @@ import redis.clients.jedis.JedisPoolConfig;
 @Configuration
 @EnableCaching // 开启注解
 public class RedisConfig {
-	@Bean
-	public CacheManager cacheManager(RedisConnectionFactory redisConnectionFactory) {
-		RedisCacheConfiguration redisCacheConfiguration = RedisCacheConfiguration.defaultCacheConfig()
-				.entryTtl(Duration.ofHours(1)); // 设置缓存有效期一小时
-		return RedisCacheManager.builder(RedisCacheWriter.nonLockingRedisCacheWriter(redisConnectionFactory))
-				.cacheDefaults(redisCacheConfiguration).build();
-	}
+//	@Bean
+//	public CacheManager cacheManager(RedisConnectionFactory redisConnectionFactory) {
+//		RedisCacheConfiguration redisCacheConfiguration = RedisCacheConfiguration.defaultCacheConfig()
+//				.entryTtl(Duration.ofHours(2)); // 设置缓存有效期一小时
+//		return RedisCacheManager.builder(RedisCacheWriter.nonLockingRedisCacheWriter(redisConnectionFactory))
+//				.cacheDefaults(redisCacheConfiguration).build();
+//	}
 
 	@Bean
 	public RedisTemplate<Object, Object> redisTemplate(RedisConnectionFactory connectionFactory) {
