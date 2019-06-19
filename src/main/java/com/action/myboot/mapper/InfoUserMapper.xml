@@ -7,14 +7,38 @@
 		<id column="info_id" property="infoId" javaType="int" />
 		<result column="user_name" property="infoName" javaType="java.lang.String" />
 		<result column="user_pwd" property="infoPwd" javaType="java.lang.String" />
-		<result column="user_gender" property="sex" typeHandler="com.action.myboot.typeHandler.GenderTypeHandler" />
+		<result column="user_gender" property="sex"
+			typeHandler="com.action.myboot.typeHandler.GenderTypeHandler" />
 	</resultMap>
-	<select id="getInfoUser" resultType="infoUser" >
+	<select id="getInfoUser" resultType="infoUser">
 		select
-		info_id as infoId,user_name as infoName,user_pwd as infoPwd,user_gender as sex from infouser where
+		info_id as
+		infoId,user_name as infoName,user_pwd as infoPwd,user_gender as sex
+		from infouser where
 		info_id=#{infoId}
 	</select>
-	<insert id="addInfoUser" parameterType="infoUser">
-			insert into infouser(user_name,user_pwd,user_gender) values(#{user.infoName},#{user.infoPwd},#{user.sex})
+	<insert id="insertInfoUser" useGeneratedKeys="true" keyProperty="user.infoId"
+		parameterType="infoUser" >
+		insert into infouser(user_name,user_pwd,user_gender)
+		values(#{user.infoName},#{user.infoPwd},#{user.sex})
 	</insert>
+	<update id="updateInfoUser" parameterType="infoUser" >
+		update infouser
+		<set>
+			<if test="user.infoName!=null">user_name=#{user.infoName},</if>
+			<if test="user.infoPwd!=null">user_pwd=#{user.infoPwd}</if>
+		</set>
+		where info_id=#{user.infoId}
+	</update>
+	<delete id="deleteInfoUser">
+		delete from infouser where
+		info_id=#{infoId}
+	</delete>
+	<select id="findUserLikeName" resultType="infoUser">
+		select
+		info_id as infoId,user_name as infoName,user_pwd as
+		infoPwd,user_gender as sex from infouser 
+		where user_name like
+		"%"#{userName}"%"
+	</select>
 </mapper>

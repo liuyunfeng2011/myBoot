@@ -2,6 +2,7 @@ package com.action.myboot.service.impl;
 
 import static org.junit.Assert.*;
 
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import javax.annotation.Resource;
@@ -30,19 +31,41 @@ public class InfoUserServiceImplTest {
 	@Ignore
 	@Test
 	public void testGetInfoUser() {
-		InfoUser user= infoUserService.getInfoUser(3);
-		System.out.println(user.getSex().getName());
+		InfoUser user= infoUserService.getInfoUser(22);
+		System.out.println(user.getInfoName());
 	}
 	@Ignore
 	@Rollback(false)
 	@Test
 	public void testAddInfoUser() {
 		InfoUser user= new InfoUser();
-		user.setInfoName("xiaohei3");
+		user.setInfoName("xiaohuihui2");
 		user.setInfoPwd("admin123");
 		user.setSex(SexEnum.FEMALE);
 		infoUserService.addInfoUser(user);
+		System.out.println("++++++++++++++++++++++++++++++"+user.getInfoId());
 	}
+	@Rollback(false)
+	@Test
+	public void testupInfoUser() {
+		InfoUser user= new InfoUser();
+		user.setInfoId(22);
+		user.setInfoName("caozh2i");
+		infoUserService.updateInfoUser(user);
+	}
+	@Ignore
+	@Test
+	public void testfindUserLikeName() {
+		List<InfoUser> users= infoUserService.findUserLikeName("xiao");
+		System.out.println(users);
+	}
+	@Ignore
+	@Rollback(false)
+	@Test
+	public void testdeleteUser() {
+		infoUserService.deleteInfoUser(24);
+	}
+	@Ignore
 	@Test
 	public void testRedis() {
 //		redisTemplate.opsForValue().set("name", "xiaoheihei");

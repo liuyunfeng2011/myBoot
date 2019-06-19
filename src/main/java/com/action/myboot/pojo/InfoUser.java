@@ -2,13 +2,15 @@ package com.action.myboot.pojo;
 
 
 
+import java.io.Serializable;
+
 import org.apache.ibatis.type.Alias;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 @Alias(value="infoUser")
-public class InfoUser {
+public class InfoUser implements Serializable{
 	public InfoUser() {
 		super();
 		// TODO Auto-generated constructor stub
