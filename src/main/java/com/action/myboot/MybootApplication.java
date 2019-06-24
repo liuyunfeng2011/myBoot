@@ -9,15 +9,16 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.serializer.RedisSerializer;
+import org.springframework.stereotype.Repository;
 
 @SpringBootApplication
-@MapperScan("com.action.myboot.mapper")
+//@MapperScan("com.action.myboot.mapper")
+@MapperScan(basePackages = "com.action.myboot",
+annotationClass = Repository.class)
 @EnableCaching
 public class MybootApplication {
 	@Resource(name="redisTemplate")
 	private RedisTemplate redisTemplate;
-	
-	
 	// 自定义初始化
     @PostConstruct
     public void init() {

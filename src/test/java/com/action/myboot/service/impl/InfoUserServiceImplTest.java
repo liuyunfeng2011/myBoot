@@ -28,7 +28,6 @@ public class InfoUserServiceImplTest {
     private RedisUtil redisUtil;
 	@Resource(name="infoUserService")
 	private InfoUserService infoUserService;
-	@Ignore
 	@Test
 	public void testGetInfoUser() {
 		InfoUser user= infoUserService.getInfoUser(22);
@@ -45,6 +44,7 @@ public class InfoUserServiceImplTest {
 		infoUserService.addInfoUser(user);
 		System.out.println("++++++++++++++++++++++++++++++"+user.getInfoId());
 	}
+	@Ignore
 	@Rollback(false)
 	@Test
 	public void testupInfoUser() {

@@ -7,22 +7,27 @@ import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.validation.Valid;
+import javax.xml.ws.ResponseWrapper;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.action.myboot.util.APIException;
 import com.action.myboot.util.JsonResult;
 import com.action.myboot.util.JwtTokenUtils;
+import com.action.myboot.util.MyExption;
 import com.action.myboot.util.ResultCode;
 import com.action.myboot.pojo.User;
 import com.action.myboot.service.UserService;
@@ -32,7 +37,19 @@ public class HelloController {
 	@Resource(name="userService")
 	private UserService userService;
 	@RequestMapping(value="/sayHello/{name}",method=RequestMethod.GET)
-	public String sayHello(@PathVariable("name")String name) {
+	public String sayHello(@PathVariable("name")String name) throws Exception{
+		if(name.equals("zhangsan")){
+			throw new Exception();
+		}else 
+		if(name.equals("lisi")){
+			throw new MyExption();
+		}
+		return "hello boot"+name;
+	}
+	
+	
+	@RequestMapping(value="/interceptor/sayHello11/{name}",method=RequestMethod.GET)
+	public String sayHello11(@PathVariable("name")String name) throws Exception{
 		return "hello boot"+name;
 	}
 	/**

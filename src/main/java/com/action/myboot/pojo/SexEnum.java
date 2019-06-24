@@ -3,7 +3,6 @@ package com.action.myboot.pojo;
 import org.apache.ibatis.type.JdbcType;
 import org.apache.ibatis.type.MappedJdbcTypes;
 import org.apache.ibatis.type.MappedTypes;
-
 //性别枚举类
 //声明JdbcType为整型
 @MappedJdbcTypes(value=JdbcType.INTEGER)

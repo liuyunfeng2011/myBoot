@@ -23,7 +23,7 @@ public class InfoUserServiceImpl implements InfoUserService {
 	private InfoUserMapper infoMapper;
 	@Override
 	@Transactional
-	@Cacheable(value="redisCache",key="'redis_user'+#infoId")
+	//@Cacheable(value="redisCache",key="'redis_user'+#infoId")
 	public InfoUser getInfoUser(int infoId) {
 		// TODO Auto-generated method stub
 		return infoMapper.getInfoUser(infoId);
